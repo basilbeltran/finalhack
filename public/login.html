@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+    <head>
+        <title>Split-It</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <!-- jquery, Bootstrap.css, bootstrap.js, Custom CSS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" type ="text/css" />
+        <link rel="stylesheet" href="main.css" type="text/css" />
+        
+        <!-- angular -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+        
+        <!-- Custom JS -->
+        <script src="/js/loginController.js"></script>
+        <script src="/js/pwdValidator.js"></script>
+    </head>
+
+    <body>
+
+        <li><a href="/">Home</a></li>
+        <li><button type="button" class="btn btn-primary navbar-btn" onclick="location.href='/marketplace.html'">Link to Market</button></li>                    
+       
+        <li><button type="button" class="btn btn-primary navbar-btn" onclick="location.href='/dashboard'">link to dashboard</button></li>
+        <li><a href="/login">Sign Up/Log In</a></li>
+        <li><a href="/logout">Logout</a></li>
+                
+
+        <!-- Login -->
+        <div ng-controller="loginController as login">
+            <form id="login" ng-submit="login.submit()">
+                <input type="email" ng-model="login.email" placeholder="Email"/>
+                <input type="password" ng-model="login.password" placeholder="Password"/>
+                <button type="submit">Login</button>
+                <a href="/index">Recover Password</a>
+            </form>
+        </div>
+
+        <!-- Register -->
+        <div ng-controller="registerController as register">
+            <form id="register" ng-submit="register.submit()">
+                <input type="email" ng-model="register.email" placeholder="Email" required="yes"/>
+                <input type="password" placeholder="Password"name="pass1" id="pass1">
+                <input type="password" ng-model="register.password" placeholder="Confirm Password" name="pass2" id="pass2" onkeyup="checkPass(); return false;">
+                <span id="confirmMessage" class="confirmMessage"></span>
+        
+                <!-- <input type="text" ng-model="register.firstname" placeholder="First Name" required="yes"/>
+                <input type="text" ng-model="register.lastname" placeholder="Last Name" equired="yes"/>
+                <input type="date" ng-model="register.birthday" placeholder="Birthday" required="yes"/> -->
+                <button type="submit">Register</button>
+
+            </form>
+        </div>
+    </body>
+</html>
